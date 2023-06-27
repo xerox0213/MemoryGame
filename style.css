@@ -1,0 +1,105 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: linear-gradient(to right, orange, orangered);
+  color: white;
+  font-family: "Lato", sans-serif;
+  padding: 1px;
+}
+
+.main {
+  margin-top: 20px;
+}
+
+
+.game-title,
+.game-goal,
+.game-indicator {
+  text-align: center;
+}
+
+.game-title {
+  margin-bottom: 10px;
+  font-size: clamp(25px, 5vw, 50px);
+  font-weight: 300;
+}
+
+.game-goal,
+.game-indicator {
+  font-size: clamp(14px, 2.86vw, 20px);
+}
+
+.game-goal {
+  margin-bottom: 5px;
+}
+
+.very-bold {
+  font-weight: 900;
+}
+
+.cards-container {
+  aspect-ratio: 4/3;
+  max-width: 800px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  margin: 40px auto;
+}
+
+.card-wrapper {
+  position: relative;
+  perspective: 2000px;
+}
+
+
+.card-wrapper.active .card {
+  transform: rotateY(180deg);
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card-front img,
+.card-back img {
+  width: 50%;
+  height: auto;
+}
+
+.card-front {}
+
+.card-back {
+  transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  background-color: white;
+}
+
+.disabled {
+  pointer-events: none;
+}
